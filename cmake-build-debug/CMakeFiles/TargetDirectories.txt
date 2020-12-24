@@ -1,0 +1,3 @@
+C:/code/Coloring_graph/cmake-build-debug/CMakeFiles/Coloring_graph.dir
+C:/code/Coloring_graph/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/code/Coloring_graph/cmake-build-debug/CMakeFiles/rebuild_cache.dir

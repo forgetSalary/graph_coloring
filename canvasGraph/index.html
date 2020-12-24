@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Курсовая работа по ЛиОА</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet/less" type="text/css" href="assets/styles/main.less" />
+    <script src="//cdn.jsdelivr.net/npm/less" ></script>
+    <link rel="stylesheet" href= "assets/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="assets/images/favicon-32x32.png" sizes="32x32">
+</head>
+<body>
+<div class="container page-wrap" id="mainContainer">
+    <div class="content">
+        <h1 style="display:inline;" id="h1Header">Раскраска графа</h1>
+        <section>
+            <ul class="nav nav-pills">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="glyphicon glyphicon-cog fa-fw"></span>
+                        <span class="hidden-phone"> Граф </span>
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <button type="button" class="btn btn-default btn-sm btn-submenu" id="ShowAdjacencyMatrix">
+                                <span class="glyphicon glyphicon-th fa-fw"></span> Матрица смежности</button>
+                        </li>
+                        <li>
+                            <button  style="text-align: left;" type="button" class="btn btn-default btn-sm btn-submenu" id="RandomGraph">
+                                <span class="glyphicon glyphicon-pencil fa-fw"></span> Создать рандомный граф </button>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <button type="button" class="btn btn-default btn-sm btn-submenu" id="DeleteAll">
+                                <span class="glyphicon glyphicon-remove fa-fw"></span> Удалить всё</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="glyphicon glyphicon-cog fa-fw"></span>
+                        <span class="hidden-phone"> Вид </span>
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <button type="button" class="btn btn-default btn-sm btn-submenu" id="vertex-size">
+                                <span class="glyphicon glyphicon-plus fa-fw"></span>Размер вершин</button>
+                            <input id="range-vertex-radius" name="range" type="range" value="20">
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-default btn-sm btn-submenu" id="edge-thickness">
+                                <span class="glyphicon glyphicon-plus fa-fw"></span>Ширина ребер</button>
+                            <input id="range-edge-thickness" name="range" type="range" value="21">
+                        </li>
+                        <li>
+                            <span class="glyphicon glyphicon-plus fa-fw"></span>Выделять ребра выбранной вершины</button>
+                            <input id="edge-color" type="checkbox" name="standout" value="true">
+                        </li>
+                    </ul>
+                </div>
+
+                <button type="button" class="btn btn-default btn-sm" id="Default"><span class="glyphicon glyphicon-fullscreen fa-fw">
+                    </span><span class="hidden-phone"> По умолчанию <sub style="color:#AAAAAA">m</sub></span>
+                </button>
+
+                <button type="button" class="btn btn-primary btn-sm" id="AddGraph">
+                    <span class="glyphicon glyphicon-plus fa-fw"></span>
+                    <span class="hidden-phone"> Добавить вершину <sub style="color:#AAAAAA">v</sub></span>
+                </button>
+
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="glyphicon glyphicon-cog fa-fw"></span>
+                        <span class="hidden-phone"> Соединить вершины  </span>
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <button style="text-align: left" type="button" class="btn btn-default btn-sm btn-submenu" id="oriented">
+                                <span  class="glyphicon glyphicon-plus fa-fw"></span> Ориенированное ребро </button>
+                        </li>
+                        <li>
+                            <button style="text-align: left" type="button" class="btn btn-default btn-sm btn-submenu" id="not-oriented">
+                                <span  class="glyphicon glyphicon-plus fa-fw"></span> Неориенированное ребро </button>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <button type="button" class="btn btn-default btn-sm" id="DeleteObject"><span class="glyphicon glyphicon-remove fa-fw"></span>
+                    <span class="hidden-phone"> Удалить <sub style="color:#AAAAAA">r</sub></span></button>
+
+                <button type="button" class="btn btn-default btn-sm" data-toggle="dropdown" aria-expanded="false" id="color">
+                    <span class="glyphicon glyphicon-cog fa-fw "></span><span class="hidden-phone">Раскрасить </span><span class="caret"></span>
+                </button>
+
+                <button type="button" class="btn btn-default btn-sm" data-toggle="dropdown" aria-expanded="false" id="save-image">
+                    <span class="glyphicon glyphicon-cog fa-fw "></span><span class="hidden-phone">Сохранить изображение </span><span class="caret"></span>
+                </button>
+
+            </ul>
+        </section>
+        <div id="message" class="alert alert-success" role="alert">Кликните на рабочую область, чтобы добавить вершину</div>
+        <canvas width="1100" height="600" id="field" ></canvas>
+        <div class="modal" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" >Матрица смежности</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <textarea id="matrix-input" name="matrix-input" rows="10" cols="50"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default close" data-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary close confirm-matrix">Создать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="basicModal2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" >Создать рандомный граф</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="graph-kind" style="margin-bottom:8px">
+                            <p style="margin:0">Вид графа:</p>
+                            <input type="radio" name="kind" value="Nor" checked="checked">
+                            Неориентированный
+                            <input type="radio" name="kind" value="Or" >
+                            Ориентированный
+                        </form>
+                        <p style="margin:0">Размер графа:</p>
+                        <input id="gr-size" type="number" value="5" style="margin-bottom:8px">
+                        <p style="margin:0">Плотность графа:</p>
+                        <input id="gr-density" name="range" type="range" style="margin-bottom:8px;width:50%;">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default close" data-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary close create-graph">Создать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+<script src="assets/scripts/jquery-2.2.4.min.js" ></script>
+<script src="assets/scripts/Layout/mainMenu.js" type="module"></script>
+<script src="assets/scripts/mainScript.js" type="module"></script>
+
+</body>
+</html>
