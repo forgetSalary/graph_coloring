@@ -1,8 +1,8 @@
 import {addEdge, addVertex, remVertex} from "./graph/manually.js";
 import {VertexModel,GraphModel} from './graph/models.js'
 import {canvas_arrow, canvas_line, Dot,clear} from "./canvasTools.js";
-import {coordinates_on_line,vector_length} from "./math.js";
-import {generateEdges, generateVertexes} from "./graph/VertexesGeneration.js";
+import {coordinates_on_line,vector_length} from "./maths.js";
+import {generateEdges, generateVertexes} from "./graph/vertexesGeneration.js";
 import {colorGraph, Graph, readIndpSets, matrixToString, readMatrix, inti_randomMatrix} from "./graph/graph.js"
 import {HideAll} from "./Layout/mainMenu.js";
 

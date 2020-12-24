@@ -1,7 +1,7 @@
 import {Dot} from "../canvasTools.js";
-import {vector_length} from "../math.js";
+import {vector_length} from "../maths.js";
 import {EdgeModel, VertexModel} from "./models.js";
-import {getRandomInt} from "../math.js";
+import {getRandomInt} from "../maths.js";
 
 
 export let getNewPosition = function (graphModel,vertexes){

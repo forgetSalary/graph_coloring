@@ -1,5 +1,5 @@
 import {canvas_arrow,canvas_line,Dot} from "../canvasTools.js";
-import {coordinates_on_line} from "../math.js"
+import {coordinates_on_line} from "../maths.js"
 
 export function VertexModel(id,index,x,y,main_color,id_color,context) {
     this.id = id;

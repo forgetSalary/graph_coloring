@@ -1,6 +1,6 @@
 import {canvas_arrow, canvas_line, clear} from "../canvasTools.js";
-import {coordinates_on_line} from "../math.js";
-import {getOneOrZero} from "../math.js";
+import {coordinates_on_line} from "../maths.js";
+import {getOneOrZero} from "../maths.js";
 
 let main_colors = [
     'DarkBlue',
