@@ -5,13 +5,13 @@ void test_algo(){
     matrix_graph* graph = init_graph_from_stream(test_matrix);
     row(graph->vertexes,graph->size,0,i)
     indp_sets_out(graph);
-    matrixGraph_free(graph);
+    matrix_graph_free(graph);
 }
 
 int main(int argc,char** argv) {
     matrix_graph* graph = init_graph_from_cgi_client();
     printf("Content-type: text/plain\n\n");
     indp_sets_out(graph);
-    matrixGraph_free(graph);
+    matrix_graph_free(graph);
     return 0;
 }

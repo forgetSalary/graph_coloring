@@ -24,7 +24,7 @@ void print_graph(matrix_graph* graph){
     printf("\n");
 }
 
-void matrixGraph_free(matrix_graph* graph){
+void matrix_graph_free(matrix_graph* graph){
     matrix_free(graph->matrix,graph->size);
     free(graph);
 }

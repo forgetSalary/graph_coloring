@@ -39,5 +39,5 @@ void add_vrtx(matrix_graph* graph, int new_vrtx);
 
 void print_graph(matrix_graph* graph);
 
-void matrixGraph_free(matrix_graph* graph);
+void matrix_graph_free(matrix_graph* graph);
 
